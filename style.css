@@ -285,3 +285,72 @@ body {
 .login-buttons .y2k-btn {
     width: 100%;
 }
+/* --- NEU: Y2K Glücksrad --- */
+.y2k-wheel-wrapper {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 15px auto;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 10;
+    /* Schatten für den Retro-Tiefeneffekt */
+    text-shadow: 2px 2px 0px #000;
+}
+
+.y2k-wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+    /* Der Verlauf startet bei 3 Uhr (ausgerichtet an 0 Grad) */
+    background: conic-gradient(
+        from -90deg,
+        #ffb6c1 0deg 60deg,
+        #ff9aa2 60deg 120deg,
+        #ffdac1 120deg 180deg,
+        #e2f0cb 180deg 240deg,
+        #b5ead7 240deg 300deg,
+        #c7ceea 300deg 360deg
+    );
+    /* Sanftes Auslaufen der Drehanimation (4 Sekunden) */
+    transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.wheel-text {
+    position: absolute;
+    width: 50%;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 50%;
+    /* Positioniert den Text genau mittig in das jeweilige 60-Grad-Segment */
+    transform: translateY(-50%) rotate(calc(var(--i) * 60deg + 30deg));
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+    text-align: right;
+    padding-right: 15px;
+    text-shadow: 1px 1px 0px #fff; /* Macht den Text besser lesbar */
+}
+
+/* Das kleine digitale Display unter dem Rad */
+.pixel-result-text {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    background: #000;
+    color: #ff69b4;
+    padding: 8px 12px;
+    border: 2px inset #c0c0c0; /* Inset-Border für den Windows-Look */
+    display: inline-block;
+    min-width: 150px;
+}
