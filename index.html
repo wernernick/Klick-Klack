@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y2K Dashboard</title>
+    <!-- Pixel Font für den 2000er Look -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="split-container">
+        
+        <!-- KLAUDIAS BEREICH (Pink Pastel) -->
+        <section class="side klaudia-side">
+            <div class="window-box">
+                <div class="window-header">
+                    <span>❤️ klaudia_space.exe</span>
+                    <button class="window-btn">x</button>
+                </div>
+                <div class="window-content">
+                    <div class="tamagotchi-display">
+                        <!-- Pixel-Art Platzhalter -->
+                        <img id="tama-img" src="https://via.placeholder.com/120?text=Pixel+Tama" alt="Tamagotchi">
+                    </div>
+                    <div class="pixel-bar-container">
+                        <div id="energy-bar" class="pixel-bar pink-bar"></div>
+                    </div>
+                    <button id="pet-btn" class="y2k-btn pink-btn">STREICHELN</button>
+                    
+                    <hr class="pixel-hr">
+                    
+                    <h3>Tägliches Glücksrad</h3>
+                    <div class="wheel-placeholder">[ Rad-Grafik hier ]</div>
+                    <button id="spin-btn" class="y2k-btn pink-btn">DREHEN</button>
+                </div>
+            </div>
+        </section>
 
+        <!-- NICKS BEREICH (Blau Pastel) -->
+        <section class="side nick-side">
+            <div class="window-box">
+                <div class="window-header blue-header">
+                    <span>⚙️ nick_terminal.exe</span>
+                    <button class="window-btn">x</button>
+                </div>
+                <div class="window-content">
+                    <h3>Miss-You Ping</h3>
+                    <p>Sende ein Signal rüber!</p>
+                    <button id="miss-you-btn" class="y2k-btn blue-btn">PING SENDEN</button>
+                    
+                    <hr class="pixel-hr">
+
+                    <h3>Dev-Controls</h3>
+                    <p class="small-text">Sicherheits-Sync (Nur Keyboard: Tab -> Enter)</p>
+                    <!-- Dieser Button blockiert alle Maus-Interaktionen -->
+                    <button id="dev-sync-btn" class="y2k-btn blue-btn no-mouse-btn">DB_SYNC</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
