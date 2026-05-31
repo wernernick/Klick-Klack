@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y2K Dashboard</title>
-    <!-- Pixel Font für den 2000er Look -->
+    <title>Y2K System Login</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="split-container">
+
+    <div id="login-screen" class="login-container">
+        <div class="window-box">
+            <div class="window-header">
+                <span>🔒 System_Login.exe</span>
+            </div>
+            <div class="window-content">
+                <p>Bitte Benutzer auswählen:</p>
+                <div class="login-buttons">
+                    <button id="login-klaudia" class="y2k-btn pink-btn">🌸 KLAUDIA</button>
+                    <button id="login-nick" class="y2k-btn blue-btn">💻 NICK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-dashboard" class="split-container hidden">
         
-        <!-- KLAUDIAS BEREICH (Pink Pastel) -->
-        <section class="side klaudia-side">
+        <section id="klaudia-section" class="side klaudia-side">
             <div class="window-box">
                 <div class="window-header">
                     <span>❤️ klaudia_space.exe</span>
-                    <button class="window-btn">x</button>
-                </div>
+                    <button class="window-btn" onclick="location.reload()">x</button> </div>
                 <div class="window-content">
                     <div class="tamagotchi-display">
-                        <!-- Pixel-Art Platzhalter -->
                         <img id="tama-img" src="https://via.placeholder.com/120?text=Pixel+Tama" alt="Tamagotchi">
                     </div>
                     <div class="pixel-bar-container">
@@ -37,13 +49,11 @@
             </div>
         </section>
 
-        <!-- NICKS BEREICH (Blau Pastel) -->
-        <section class="side nick-side">
+        <section id="nick-section" class="side nick-side">
             <div class="window-box">
                 <div class="window-header blue-header">
                     <span>⚙️ nick_terminal.exe</span>
-                    <button class="window-btn">x</button>
-                </div>
+                    <button class="window-btn" onclick="location.reload()">x</button> </div>
                 <div class="window-content">
                     <h3>Miss-You Ping</h3>
                     <p>Sende ein Signal rüber!</p>
@@ -53,12 +63,10 @@
 
                     <h3>Dev-Controls</h3>
                     <p class="small-text">Sicherheits-Sync (Nur Keyboard: Tab -> Enter)</p>
-                    <!-- Dieser Button blockiert alle Maus-Interaktionen -->
                     <button id="dev-sync-btn" class="y2k-btn blue-btn no-mouse-btn">DB_SYNC</button>
                 </div>
             </div>
         </section>
-
     </main>
 
     <script src="script.js"></script>
