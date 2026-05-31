@@ -1,124 +1,3 @@
-/* Globale Variablen für einfache Farbanpassungen */
-:root {
-    --bg-color: #fdf2f8; /* Zartes Rosa als Startwert */
-    --card-bg: #ffffff;
-    --primary-color: #ec4899;
-    --text-color: #333333;
-    --border-radius: 16px;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* Container-Layout: Mobile First, Tablet-freundlich */
-.dashboard-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    width: 100%;
-    max-width: 800px;
-}
-
-@media (min-width: 768px) {
-    .dashboard-container {
-        grid-template-columns: 1fr 1fr;
-    }
-    .tamagotchi-section {
-        grid-column: span 2; /* Tamagotchi nimmt oben die volle Breite ein */
-    }
-}
-
-/* Karten-Design */
-.card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Buttons */
-.action-btn, .heart-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.action-btn:hover, .heart-btn:hover {
-    transform: scale(1.05);
-}
-
-.heart-btn {
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    border-radius: 50px;
-}
-
-/* Tamagotchi Energiebalken */
-.status-bar-container {
-    width: 100%;
-    max-width: 200px;
-    height: 20px;
-    background-color: #e5e7eb;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.status-bar {
-    width: 100%; /* Startwert */
-    height: 100%;
-    background-color: #10b981; /* Grün */
-    transition: width 0.3s ease;
-}
-
-/* Platzhalter für das Rad */
-.wheel-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-}
-
-.wheel {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: conic-gradient(#fca5a5 0 90deg, #fcd34d 90deg 180deg, #6ee7b7 180deg 270deg, #93c5fd 270deg 360deg);
-    transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.wheel-pointer {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    color: #333;
-    z-index: 10;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -136,7 +15,36 @@ body {
     flex-direction: column;
 }
 
-/* Split Screen Layout */
+/* --- UTILITY & LOGIN SCREEN --- */
+.hidden {
+    display: none !important; 
+}
+
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #008080; /* Klassischer Windows 95 Desktop-Hintergrund */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.login-buttons .y2k-btn {
+    width: 100%;
+}
+
+/* --- SPLIT SCREEN LAYOUT --- */
 .split-container {
     display: flex;
     flex-direction: column;
@@ -156,12 +64,13 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .klaudia-side { background-color: rgba(255, 182, 193, 0.3); } /* Zartes Pink */
 .nick-side { background-color: rgba(173, 216, 230, 0.3); } /* Zartes Blau */
 
-/* Y2K Window Design */
+/* --- Y2K WINDOW DESIGN --- */
 .window-box {
     background: #c0c0c0;
     border-top: 2px solid #ffffff;
@@ -174,7 +83,7 @@ body {
 }
 
 .window-header {
-    background: #ff69b4; /* Pinker Header */
+    background: #ff69b4;
     color: white;
     padding: 5px 10px;
     display: flex;
@@ -183,7 +92,7 @@ body {
     font-size: 1.2rem;
 }
 
-.blue-header { background: #4169e1; } /* Blauer Header für Nick */
+.blue-header { background: #4169e1; }
 
 .window-btn {
     background: #c0c0c0;
@@ -202,7 +111,7 @@ body {
     text-align: center;
 }
 
-/* Pixel Buttons */
+/* --- PIXEL BUTTONS --- */
 .y2k-btn {
     font-size: 1.5rem;
     padding: 10px 15px;
@@ -224,17 +133,17 @@ body {
 .pink-btn { background: #ffb6c1; color: #000; }
 .blue-btn { background: #add8e6; color: #000; }
 
-/* Die Logik für den Maus-gesperrten Button */
+/* Dev-Button Schutz */
 .no-mouse-btn {
-    pointer-events: none; /* Maus-Klicks und Hover werden komplett ignoriert */
+    pointer-events: none;
 }
 .no-mouse-btn:focus {
-    pointer-events: auto; /* Nur wenn das Element per Tastatur (Tab) fokussiert ist, darf Enter gedrückt werden */
+    pointer-events: auto;
     outline: 2px dashed #4169e1;
     outline-offset: 4px;
 }
 
-/* Energiebalken im Retro-Stil */
+/* --- TAMAGOTCHI & DEKORATION --- */
 .pixel-bar-container {
     width: 100%;
     height: 25px;
@@ -245,7 +154,8 @@ body {
 
 .pixel-bar {
     height: 100%;
-    width: 80%; /* Startwert */
+    width: 80%;
+    transition: width 0.3s;
 }
 .pink-bar { background: #ff69b4; }
 
@@ -255,37 +165,9 @@ body {
     margin: 20px 0;
 }
 
-.small-text { font-size: 1rem; color: #666; }
+.small-text { font-size: 1rem; color: #666; margin-bottom: 10px; }
 
-/* --- NEU: Login-Screen & Utility-Klassen --- */
-
-/* Versteckt Elemente komplett aus dem Dokumentenfluss */
-.hidden {
-    display: none !important; 
-}
-
-.login-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Klassischer Windows-Desktop Hintergrund (Teal) für den Login */
-    background-color: #008080; 
-}
-
-.login-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-/* Anpassung der Breite für Buttons im Login */
-.login-buttons .y2k-btn {
-    width: 100%;
-}
-/* --- NEU: Y2K Glücksrad --- */
+/* --- Y2K GLÜCKSRAD --- */
 .y2k-wheel-wrapper {
     position: relative;
     width: 220px;
@@ -300,7 +182,6 @@ body {
     transform: translateX(-50%);
     font-size: 2rem;
     z-index: 10;
-    /* Schatten für den Retro-Tiefeneffekt */
     text-shadow: 2px 2px 0px #000;
 }
 
@@ -312,7 +193,6 @@ body {
     box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
     position: relative;
     overflow: hidden;
-    /* Der Verlauf startet bei 3 Uhr (ausgerichtet an 0 Grad) */
     background: conic-gradient(
         from -90deg,
         #ffb6c1 0deg 60deg,
@@ -322,7 +202,6 @@ body {
         #b5ead7 240deg 300deg,
         #c7ceea 300deg 360deg
     );
-    /* Sanftes Auslaufen der Drehanimation (4 Sekunden) */
     transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
@@ -333,24 +212,22 @@ body {
     top: 50%;
     left: 50%;
     transform-origin: 0% 50%;
-    /* Positioniert den Text genau mittig in das jeweilige 60-Grad-Segment */
     transform: translateY(-50%) rotate(calc(var(--i) * 60deg + 30deg));
     font-size: 1.1rem;
     font-weight: bold;
     color: #000;
     text-align: right;
     padding-right: 15px;
-    text-shadow: 1px 1px 0px #fff; /* Macht den Text besser lesbar */
+    text-shadow: 1px 1px 0px #fff;
 }
 
-/* Das kleine digitale Display unter dem Rad */
 .pixel-result-text {
     margin-top: 15px;
     font-size: 1.2rem;
     background: #000;
     color: #ff69b4;
     padding: 8px 12px;
-    border: 2px inset #c0c0c0; /* Inset-Border für den Windows-Look */
+    border: 2px inset #c0c0c0;
     display: inline-block;
     min-width: 150px;
 }
