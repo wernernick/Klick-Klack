@@ -1,1 +1,258 @@
+/* Globale Variablen für einfache Farbanpassungen */
+:root {
+    --bg-color: #fdf2f8; /* Zartes Rosa als Startwert */
+    --card-bg: #ffffff;
+    --primary-color: #ec4899;
+    --text-color: #333333;
+    --border-radius: 16px;
+}
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container-Layout: Mobile First, Tablet-freundlich */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+@media (min-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .tamagotchi-section {
+        grid-column: span 2; /* Tamagotchi nimmt oben die volle Breite ein */
+    }
+}
+
+/* Karten-Design */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Buttons */
+.action-btn, .heart-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.action-btn:hover, .heart-btn:hover {
+    transform: scale(1.05);
+}
+
+.heart-btn {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border-radius: 50px;
+}
+
+/* Tamagotchi Energiebalken */
+.status-bar-container {
+    width: 100%;
+    max-width: 200px;
+    height: 20px;
+    background-color: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.status-bar {
+    width: 100%; /* Startwert */
+    height: 100%;
+    background-color: #10b981; /* Grün */
+    transition: width 0.3s ease;
+}
+
+/* Platzhalter für das Rad */
+.wheel-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#fca5a5 0 90deg, #fcd34d 90deg 180deg, #6ee7b7 180deg 270deg, #93c5fd 270deg 360deg);
+    transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #333;
+    z-index: 10;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace; /* Die Y2K Pixel-Schrift */
+}
+
+body {
+    background-color: #f0f0f0;
+    /* Ein karierter Hintergrund, typisch für alte 2000er Websites */
+    background-image: linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
+    background-size: 20px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Split Screen Layout */
+.split-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .split-container {
+        flex-direction: row;
+    }
+}
+
+.side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.klaudia-side { background-color: rgba(255, 182, 193, 0.3); } /* Zartes Pink */
+.nick-side { background-color: rgba(173, 216, 230, 0.3); } /* Zartes Blau */
+
+/* Y2K Window Design */
+.window-box {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.window-header {
+    background: #ff69b4; /* Pinker Header */
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.blue-header { background: #4169e1; } /* Blauer Header für Nick */
+
+.window-btn {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.window-content {
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+}
+
+/* Pixel Buttons */
+.y2k-btn {
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+
+.y2k-btn:active {
+    border-top: 2px solid #000000;
+    border-left: 2px solid #000000;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+.pink-btn { background: #ffb6c1; color: #000; }
+.blue-btn { background: #add8e6; color: #000; }
+
+/* Die Logik für den Maus-gesperrten Button */
+.no-mouse-btn {
+    pointer-events: none; /* Maus-Klicks und Hover werden komplett ignoriert */
+}
+.no-mouse-btn:focus {
+    pointer-events: auto; /* Nur wenn das Element per Tastatur (Tab) fokussiert ist, darf Enter gedrückt werden */
+    outline: 2px dashed #4169e1;
+    outline-offset: 4px;
+}
+
+/* Energiebalken im Retro-Stil */
+.pixel-bar-container {
+    width: 100%;
+    height: 25px;
+    background: #000;
+    padding: 2px;
+    margin-bottom: 15px;
+}
+
+.pixel-bar {
+    height: 100%;
+    width: 80%; /* Startwert */
+}
+.pink-bar { background: #ff69b4; }
+
+.pixel-hr {
+    border: none;
+    border-top: 2px dashed #c0c0c0;
+    margin: 20px 0;
+}
+
+.small-text { font-size: 1rem; color: #666; }
