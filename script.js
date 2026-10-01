@@ -27,11 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- KLAUDIAS FUNKTIONEN ---
-    // --- KLAUDIAS FUNKTIONEN ---
     const petBtn = document.getElementById('pet-btn');
     const energyBar = document.getElementById('energy-bar');
     
-    // --- NEU: Glücksrad Variablen ---
+    // --- Glücksrad ---
     const spinBtn = document.getElementById('spin-btn');
     const wheel = document.getElementById('wheel');
     const wheelResult = document.getElementById('wheel-result');
@@ -41,10 +40,31 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentRotation = 0;
     let isSpinning = false;
 
+    // --- Streicheln: Energie steigt, Tamagotchi freut sich ---
+    const tama = document.getElementById('tama-img');
+    const tamaMsg = document.getElementById('tama-msg');
+    const faces = ['(◕‿◕)', '(｡♥‿♥｡)', '(≧◡≦)', '(◠‿◠)✿'];
+    const msgs = ['Hihi, das kitzelt!', 'Mehr bitte!', 'Ich hab dich lieb ♥', 'So schön warm...'];
+    let energy = 80;
+
+    if (petBtn) {
+        petBtn.addEventListener('click', () => {
+            energy = Math.min(100, energy + 5);
+            energyBar.style.width = energy + '%';
+            const k = Math.floor(Math.random() * faces.length);
+            tama.textContent = faces[k];
+            tamaMsg.textContent = energy >= 100 ? 'Voll aufgeladen! ♥♥♥' : msgs[k];
+            tama.classList.remove('happy');
+            void tama.offsetWidth; // Animation neu starten
+            tama.classList.add('happy');
+        });
+    }
+
     if (spinBtn) {
         spinBtn.addEventListener('click', () => {
             if (isSpinning) return; // Blockiert den Button, solange sich das Rad dreht
             isSpinning = true;
+            spinBtn.disabled = true;
             wheelResult.innerText = "[ DREHT... ]";
 
             // Zufällige Rotation: Mindestens 4 volle Umdrehungen (1440 Grad) + ein zufälliger Winkel
@@ -55,21 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Dieses Event feuert automatisch, sobald die CSS-Dreh-Animation abgeschlossen ist
-        wheel.addEventListener('transitionend', () => {
+        wheel.addEventListener('transitionend', (e) => {
+            if (e.target !== wheel || !isSpinning) return;
             isSpinning = false;
-            
-            // Mathematische Berechnung, welches Segment oben am Pfeil (270 Grad) steht
-            // 1. Die gesamte Drehung auf einen Wert zwischen 0 und 359 normalisieren
-            const normalizedRotation = currentRotation % 360;
-            
-            // 2. Da sich das Rad im Uhrzeigersinn dreht, wandern die Segmente gegen den Uhrzeigersinn unter dem Pfeil durch
-            // Der Pfeil befindet sich oben bei 270 Grad (bezogen auf den Startpunkt bei 3 Uhr)
-            const actualDeg = (270 - normalizedRotation + 360) % 360;
-            
-            // 3. Jedes Segment ist 60 Grad groß (360 / 6)
+            spinBtn.disabled = false;
+
+            // Der Pfeil zeigt nach oben (0 Grad). Das Rad dreht im Uhrzeigersinn,
+            // also liegt unter dem Pfeil der Radwinkel (360 - Drehung) mod 360.
+            const actualDeg = (360 - (currentRotation % 360)) % 360;
             const segmentIndex = Math.floor(actualDeg / 60);
 
-            // Ergebnis anzeigen
             wheelResult.innerText = `> ${wheelSegments[segmentIndex].toUpperCase()} <`;
         });
     }
@@ -80,7 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (missYouBtn) {
         missYouBtn.addEventListener('click', () => {
-            console.log("Ping via Formspree gesendet!");
+            const status = document.getElementById('ping-status');
+            status.innerText = '> PING GESENDET ♥ <';
+            missYouBtn.disabled = true;
+            setTimeout(() => {
+                status.innerText = 'Bereit.';
+                missYouBtn.disabled = false;
+            }, 3000);
         });
     }
 

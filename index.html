@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y2K System Login</title>
+    <title>Klick-Klack · Y2K System</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -30,11 +30,12 @@
             <div class="window-box">
                 <div class="window-header">
                     <span>❤️ klaudia_space.exe</span>
-                    <button class="window-btn" onclick="location.reload()">x</button>
+                    <button class="window-btn" onclick="location.reload()" aria-label="Abmelden">x</button>
                 </div>
                 <div class="window-content">
                     <div class="tamagotchi-display">
-                        <img id="tama-img" src="https://via.placeholder.com/120?text=Pixel+Tama" alt="Tamagotchi">
+                        <div id="tama-img" class="tama-sprite" role="img" aria-label="Tamagotchi">(◕‿◕)</div>
+                        <p id="tama-msg" class="small-text">Hallo! Ich hab dich lieb ♥</p>
                     </div>
                     <div class="pixel-bar-container">
                         <div id="energy-bar" class="pixel-bar pink-bar"></div>
@@ -57,7 +58,7 @@
                     </div>
                     <button id="spin-btn" class="y2k-btn pink-btn">DREHEN</button>
                     <br>
-                    <p id="wheel-result" class="pixel-result-text">Klick auf Drehen!</p>
+                    <p id="wheel-result" class="pixel-result-text" aria-live="polite">Klick auf Drehen!</p>
                 </div>
             </div>
         </section>
@@ -66,11 +67,12 @@
             <div class="window-box">
                 <div class="window-header blue-header">
                     <span>⚙️ nick_terminal.exe</span>
-                    <button class="window-btn" onclick="location.reload()">x</button>
+                    <button class="window-btn" onclick="location.reload()" aria-label="Abmelden">x</button>
                 </div>
                 <div class="window-content">
                     <h3>Miss-You Ping</h3>
                     <p>Sende ein Signal rüber!</p>
+                    <p id="ping-status" class="pixel-result-text blue-result" aria-live="polite">Bereit.</p><br>
                     <button id="miss-you-btn" class="y2k-btn blue-btn">PING SENDEN</button>
                     
                     <hr class="pixel-hr">

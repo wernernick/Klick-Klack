@@ -10,7 +10,7 @@ body {
     /* Ein karierter Hintergrund, typisch für alte 2000er Websites */
     background-image: linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
     background-size: 20px 20px;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -48,7 +48,7 @@ body {
 .split-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
 }
 
@@ -65,6 +65,7 @@ body {
     align-items: center;
     padding: 20px;
     min-height: 100vh;
+    transition: background-color 0.3s;
 }
 
 .klaudia-side { background-color: rgba(255, 182, 193, 0.3); } /* Zartes Pink */
@@ -194,7 +195,7 @@ body {
     position: relative;
     overflow: hidden;
     background: conic-gradient(
-        from -90deg,
+        from 0deg,
         #ffb6c1 0deg 60deg,
         #ff9aa2 60deg 120deg,
         #ffdac1 120deg 180deg,
@@ -212,7 +213,7 @@ body {
     top: 50%;
     left: 50%;
     transform-origin: 0% 50%;
-    transform: translateY(-50%) rotate(calc(var(--i) * 60deg + 30deg));
+    transform: translateY(-50%) rotate(calc(var(--i) * 60deg - 60deg));
     font-size: 1.1rem;
     font-weight: bold;
     color: #000;
@@ -230,4 +231,33 @@ body {
     border: 2px inset #c0c0c0;
     display: inline-block;
     min-width: 150px;
+}
+
+.blue-result { color: #7fd0ff; margin-top: 5px; }
+
+.y2k-btn:hover { filter: brightness(1.08); }
+.y2k-btn:focus-visible, .window-btn:focus-visible {
+    outline: 2px dashed #000;
+    outline-offset: 3px;
+}
+.y2k-btn:disabled { opacity: 0.6; cursor: wait; }
+
+/* --- TAMAGOTCHI --- */
+.tama-sprite {
+    font-size: 3.5rem;
+    line-height: 1;
+    margin: 10px auto;
+    padding: 15px;
+    width: 180px;
+    background: #cfe8c0;
+    border: 3px inset #c0c0c0;
+    animation: tama-idle 1.6s steps(2) infinite;
+}
+.tama-sprite.happy { animation: tama-happy 0.4s steps(2) 3; }
+@keyframes tama-idle { 50% { transform: translateY(-4px); } }
+@keyframes tama-happy { 50% { transform: translateY(-12px) rotate(4deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+    .tama-sprite, .tama-sprite.happy { animation: none; }
+    .y2k-wheel { transition-duration: 0.01s; }
 }
